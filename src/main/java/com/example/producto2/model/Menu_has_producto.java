@@ -1,20 +1,17 @@
 package com.example.producto2.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "menus_has_productos")
-public class menu_has_producto {
-
+public class Menu_has_producto {
     @Id
-    private Integer id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_menu", nullable = false)
     private int menu_ID;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto", nullable = false)
     private int producto_ID;
 

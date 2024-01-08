@@ -1,14 +1,14 @@
 package com.example.producto2.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "productos")
-public class producto {
+public class Producto {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
     private Integer id;
 
@@ -23,6 +23,34 @@ public class producto {
 
     @Column(name = "kcal", nullable = false)
     private float kcal;
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public com.example.producto2.model.Tipo getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(com.example.producto2.model.Tipo tipo) {
+        Tipo = tipo;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "Menu_has_producto",
+            joinColumns = @JoinColumn(name = "id_producto"),
+            inverseJoinColumns = @JoinColumn(name = "id_menu")
+    )
+    private List<Menu> menus;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo", nullable = false)
+    private com.example.producto2.model.Tipo Tipo;
 
     public String getNombre() {
         return nombre;

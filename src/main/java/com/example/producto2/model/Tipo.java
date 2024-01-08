@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tipos")
-public class tipo {
+public class Tipo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo")
     private Integer id;
 
@@ -15,9 +16,6 @@ public class tipo {
 
     @Column(name = "descrip", nullable = false)
     private String descripcion;
-
-    @Column(name = "id_producto", nullable = false)
-    private int producto_ID;
 
     public String getNombre() {
         return nombre;
@@ -33,14 +31,6 @@ public class tipo {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public int getProducto_ID() {
-        return producto_ID;
-    }
-
-    public void setProducto_ID(int producto_ID) {
-        this.producto_ID = producto_ID;
     }
 
     public void setId(Integer id) {
