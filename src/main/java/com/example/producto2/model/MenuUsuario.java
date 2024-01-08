@@ -29,4 +29,5 @@ public class MenuUsuario {
     public void setUsuarioID(int usuarioID) {
         this.usuarioID = usuarioID;
     }
+
 }
