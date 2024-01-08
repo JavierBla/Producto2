@@ -7,15 +7,19 @@ import jakarta.persistence.*;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     int id;
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false)
     String name;
-    @Column(name = "apellidos")
+    @Column(name = "apellidos", nullable = false)
     String apellidos;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     String email;
-    @Column(name = "telefono")
+    @Column(name = "telefono", nullable = false)
     int telefono;
+    @ManyToOne()
+    @JoinColumn(name = "id_pedido", nullable = false)
+    Pedido pedido;
 
     public int getId() {
         return id;
@@ -55,5 +59,13 @@ public class Usuario {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }

@@ -7,10 +7,11 @@ import jakarta.persistence.*;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido")
     int id;
-    @Column(name = "num_pedido")
+    @Column(name = "num_pedido", nullable = false)
     int numPedido;
-    @Column(name = "direccion")
+    @Column(name = "direccion", nullable = false)
     String direccion;
 
     public void setId(int id) {
