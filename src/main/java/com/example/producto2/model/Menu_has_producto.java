@@ -30,12 +30,4 @@ public class Menu_has_producto {
     public void setProducto_ID(int producto_ID) {
         this.producto_ID = producto_ID;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
 }
