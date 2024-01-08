@@ -2,6 +2,8 @@ package com.example.producto2.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -17,9 +19,17 @@ public class Usuario {
     String email;
     @Column(name = "telefono", nullable = false)
     int telefono;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_pedido", nullable = false)
     Pedido pedido;
+
+    @ManyToMany
+    @JoinTable(
+            name = "menu_has_usuario",
+            joinColumns = {@JoinColumn(name = "id_usuario")},
+                inverseJoinColumns = {@JoinColumn(name = "id_menu")}
+    )
+    List<Menu> menu;
 
     public int getId() {
         return id;
