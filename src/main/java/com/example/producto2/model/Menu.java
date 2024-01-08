@@ -1,11 +1,9 @@
 package com.example.producto2.model;
 
 import jakarta.persistence.*;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
-@Validated
 @Entity
 @Table(name = "menus")
 public class Menu {
