@@ -35,4 +35,5 @@ public class PedidoDaoImpl implements IPedidoDao{
         TypedQuery<Pedido> query = manager.createQuery("SELECT p FROM Pedido p", Pedido.class);
         return query.getResultList();
     }
+
 }
