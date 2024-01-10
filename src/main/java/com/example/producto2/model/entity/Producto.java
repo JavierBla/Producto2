@@ -1,4 +1,4 @@
-package com.example.producto2.model;
+package com.example.producto2.model.entity;
 
 import jakarta.persistence.*;
 
@@ -32,11 +32,11 @@ public class Producto {
         this.menus = menus;
     }
 
-    public com.example.producto2.model.Tipo getTipo() {
+    public com.example.producto2.model.entity.Tipo getTipo() {
         return Tipo;
     }
 
-    public void setTipo(com.example.producto2.model.Tipo tipo) {
+    public void setTipo(com.example.producto2.model.entity.Tipo tipo) {
         Tipo = tipo;
     }
 
@@ -50,7 +50,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_tipo", nullable = false)
-    private com.example.producto2.model.Tipo Tipo;
+    private com.example.producto2.model.entity.Tipo Tipo;
 
     public String getNombre() {
         return nombre;

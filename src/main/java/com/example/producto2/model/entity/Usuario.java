@@ -1,4 +1,4 @@
-package com.example.producto2.model;
+package com.example.producto2.model.entity;
 
 import jakarta.persistence.*;
 
@@ -29,7 +29,7 @@ public class Usuario {
             joinColumns = {@JoinColumn(name = "id_usuario")},
                 inverseJoinColumns = {@JoinColumn(name = "id_menu")}
     )
-    List<Menu> menu;
+    private List<Menu> menus;
 
     public int getId() {
         return id;

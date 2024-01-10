@@ -1,4 +1,4 @@
-package com.example.producto2.model;
+package com.example.producto2.model.entity;
 
 import jakarta.persistence.*;
 
