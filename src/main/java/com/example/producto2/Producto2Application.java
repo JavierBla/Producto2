@@ -10,6 +10,4 @@ public class Producto2Application {
         SpringApplication.run(Producto2Application.class, args);
     }
 
-    // Prueba
-
 }
