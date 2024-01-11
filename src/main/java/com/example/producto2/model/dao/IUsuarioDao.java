@@ -6,12 +6,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface IUsuarioDao {
-    @Transactional
-    void save(Usuario usuario);
+    void save(Usuario usuarios);
 
-    @Transactional
     Usuario findById(int id);
 
-    @Transactional
     List<Usuario> findAll();
+
+    Usuario findByRole(String role);
+
+    void delete(int id);
+
+    void deleteAll();
+
+    void update(Usuario usuarios);
 }

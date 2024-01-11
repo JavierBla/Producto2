@@ -6,6 +6,14 @@ import java.util.List;
 
 public interface MenuDao {
     void save(Menu menu);
+
     Menu findByID(int id);
+
     List<Menu> findAll();
+
+    void delete(int id);
+
+    void deleteAll(int id);
+
+    void update(Menu menu);
 }

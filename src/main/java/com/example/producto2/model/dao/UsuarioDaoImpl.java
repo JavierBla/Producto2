@@ -35,4 +35,32 @@ public class UsuarioDaoImpl implements IUsuarioDao{
         TypedQuery<Usuario> query = manager.createQuery("SELECT u from Usuario u", Usuario.class);
         return query.getResultList();
     }
+
+    @Override
+    public Usuario findByRole(String role) {
+        TypedQuery<Usuario> typedNadador = manager.createQuery("from Usuario where rolesAssociated=" + "'" + role + "'", Usuario.class);
+        return typedNadador.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        manager.remove(findById(id));
+    }
+
+    @Override
+    @Transactional
+    public void deleteAll() {
+        List<Usuario> usuarios = findAll();
+
+        for (Usuario usuario : usuarios) {
+            manager.remove(usuario);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void update(Usuario usuarios) {
+        manager.merge(usuarios);
+    }
 }

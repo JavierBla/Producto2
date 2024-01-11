@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class TipoDaoImpl implements TipoDao{
     }
 
     @Override
+    @Transactional
     public void save(Tipo tipo) {
         entityManager.persist(tipo);
     }
@@ -32,5 +34,27 @@ public class TipoDaoImpl implements TipoDao{
     public List<Tipo> findAll() {
         TypedQuery<Tipo> typeTipos = entityManager.createQuery("from Tipo", Tipo.class);
         return typeTipos.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        entityManager.remove(findByID(id));
+    }
+
+    @Override
+    @Transactional
+    public void deleteAll() {
+        List<Tipo> tipos = findAll();
+
+        for (Tipo tipo : tipos) {
+            entityManager.remove(tipo);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void update(Tipo tipo) {
+        entityManager.merge(tipo);
     }
 }

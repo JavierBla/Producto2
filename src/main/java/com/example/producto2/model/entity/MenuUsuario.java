@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 public class MenuUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_id")
+    @Column(name = "id_menu")
     int menuID;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "id_usuario")
     int usuarioID;
 
     public int getMenuID() {

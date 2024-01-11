@@ -1,17 +1,21 @@
 package com.example.producto2.model.dao;
 
 import com.example.producto2.model.entity.Pedido;
+import com.example.producto2.model.entity.Tipo;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface IPedidoDao {
-    @Transactional
     void save(Pedido pedido);
 
-    @Transactional
     Pedido findById(int id);
 
-    @Transactional
     List<Pedido> findAll();
+
+    void delete(int id);
+
+    void deleteAll();
+
+    void update(Pedido pedido);
 }

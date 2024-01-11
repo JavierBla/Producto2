@@ -15,7 +15,7 @@ public class Menu {
     @Column(nullable = false)
     private String nombre;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "Menu_has_producto",
             joinColumns = @JoinColumn(name = "id_menu"),

@@ -35,4 +35,26 @@ public class PedidoDaoImpl implements IPedidoDao{
         TypedQuery<Pedido> query = manager.createQuery("SELECT p FROM Pedido p", Pedido.class);
         return query.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        manager.remove(findById(id));
+    }
+
+    @Override
+    @Transactional
+    public void deleteAll() {
+        List<Pedido> pedidos = findAll();
+
+        for (Pedido pedido : pedidos) {
+            manager.remove(pedido);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void update(Pedido pedido) {
+        manager.merge(pedido);
+    }
 }

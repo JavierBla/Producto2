@@ -4,6 +4,7 @@ import com.example.producto2.model.entity.Menu;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class MenuDaoImpl implements MenuDao {
     }
 
     @Override
+    @Transactional
     public void save(Menu menu) {
         entityManager.persist(menu);
     }
@@ -30,5 +32,27 @@ public class MenuDaoImpl implements MenuDao {
     public List<Menu> findAll() {
         TypedQuery<Menu> typeMenus = entityManager.createQuery("from Menu", Menu.class);
         return typeMenus.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        entityManager.remove(findByID(id));
+    }
+
+    @Override
+    @Transactional
+    public void deleteAll(int id) {
+        List<Menu> menus = findAll();
+
+        for (Menu menu : menus) {
+            entityManager.remove(menu);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void update(Menu menu) {
+        entityManager.merge(menu);
     }
 }
