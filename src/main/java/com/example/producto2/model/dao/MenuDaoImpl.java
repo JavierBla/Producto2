@@ -24,7 +24,7 @@ public class MenuDaoImpl implements MenuDao {
     }
 
     @Override
-    public Menu findByID(int id) {
+    public Menu findByID(Long id) {
         return entityManager.find(Menu.class, id);
     }
 
@@ -36,13 +36,13 @@ public class MenuDaoImpl implements MenuDao {
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public void delete(Long id) {
         entityManager.remove(findByID(id));
     }
 
     @Override
     @Transactional
-    public void deleteAll(int id) {
+    public void deleteAll() {
         List<Menu> menus = findAll();
 
         for (Menu menu : menus) {

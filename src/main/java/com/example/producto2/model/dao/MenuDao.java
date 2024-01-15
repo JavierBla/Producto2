@@ -7,13 +7,13 @@ import java.util.List;
 public interface MenuDao {
     void save(Menu menu);
 
-    Menu findByID(int id);
+    Menu findByID(Long id);
 
     List<Menu> findAll();
 
-    void delete(int id);
+    void delete(Long id);
 
-    void deleteAll(int id);
+    void deleteAll();
 
     void update(Menu menu);
 }

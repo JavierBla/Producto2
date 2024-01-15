@@ -10,10 +10,13 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_menu")
-    private int id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @Column(name = "precio")
+    private double precio;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
@@ -23,6 +26,13 @@ public class Menu {
     )
     private List<Producto> productos;
 
+    public Menu(String name, double price) {
+        this.setNombre(name);
+        this.setPrecio(price);
+    }
+
+    public Menu() {
+    }
     public List<Producto> getProductos() {
         return productos;
     }
@@ -39,11 +49,19 @@ public class Menu {
         this.nombre = nombre;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }

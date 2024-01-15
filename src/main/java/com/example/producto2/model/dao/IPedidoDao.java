@@ -1,8 +1,6 @@
 package com.example.producto2.model.dao;
 
 import com.example.producto2.model.entity.Pedido;
-import com.example.producto2.model.entity.Tipo;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

@@ -19,7 +19,7 @@ public class Producto {
     private String descripcion;
 
     @Column(name = "precio", nullable = false)
-    private float precio;
+    private double precio;
 
     @Column(name = "kcal", nullable = false)
     private float kcal;
@@ -49,8 +49,17 @@ public class Producto {
     private List<Menu> menus;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo", nullable = false)
+    @JoinColumn(name = "id_tipo")
     private com.example.producto2.model.entity.Tipo Tipo;
+
+    public Producto(String name, double price, Tipo tipo) {
+        this.setNombre(name);
+        this.setPrecio(price);
+        this.setTipo(tipo);
+    }
+
+    public Producto() {
+    }
 
     public String getNombre() {
         return nombre;
@@ -68,11 +77,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
