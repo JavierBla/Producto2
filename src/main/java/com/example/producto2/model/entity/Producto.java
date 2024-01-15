@@ -33,11 +33,11 @@ public class Producto {
     }
 
     public com.example.producto2.model.entity.Tipo getTipo() {
-        return Tipo;
+        return tipo;
     }
 
     public void setTipo(com.example.producto2.model.entity.Tipo tipo) {
-        Tipo = tipo;
+        this.tipo = tipo;
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -50,10 +50,11 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_tipo")
-    private com.example.producto2.model.entity.Tipo Tipo;
+    private Tipo tipo;
 
     public Producto(String name, double price, Tipo tipo) {
         this.setNombre(name);
+        this.setDescripcion(name);
         this.setPrecio(price);
         this.setTipo(tipo);
     }

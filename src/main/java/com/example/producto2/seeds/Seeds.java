@@ -22,12 +22,12 @@ public class Seeds {
     public void generateSeeds(){
         Menu menuLibanes = new Menu("Libanes", 30.5);
         Menu menuVeggie = new Menu("Veggie", 20);
-        Menu menuBurguer = new Menu("Libanes", 25);
+        Menu menuBurguer = new Menu("Burger", 25);
         menuRepository.save(menuLibanes);
         menuRepository.save(menuVeggie);
         menuRepository.save(menuBurguer);
 
-        Tipo tipo = new Tipo("Comestible");
+        Tipo tipo = new Tipo("Comestible","Producto comestible");
         tipoRepository.save(tipo);
 
         Producto productPollo = new Producto("Pollo",5.00, tipo);
@@ -42,7 +42,3 @@ public class Seeds {
         productRepository.save(productSetas);
     }
 }
-
-
-
-

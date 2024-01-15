@@ -17,8 +17,12 @@ public class Tipo {
     @Column(name = "descrip", nullable = false)
     private String descripcion;
 
-    public Tipo(String nombre) {
+    public Tipo(String nombre, String descripcion) {
         this.setNombre(nombre);
+        this.setDescripcion(descripcion);
+    }
+
+    public Tipo() {
     }
 
     public String getNombre() {
