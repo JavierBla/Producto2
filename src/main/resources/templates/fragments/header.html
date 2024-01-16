@@ -14,17 +14,19 @@
                            href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" th:classappend="${currentPage == 'products'} ? 'active'" href="#" id="navbarProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarProductsDropdown">
+                        <a class="nav-link dropdown-toggle" th:classappend="${currentPage == 'products'} ? 'active'" href="/product" id="navbarProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-component" aria-labelledby="navbarProductsDropdown">
                             <li><a class="dropdown-item" href="/product">Ver todos</a></li>
                             <li><a class="dropdown-item" href="/product/create">Nuevo Producto</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"  th:classappend="${currentPage == 'menus'} ? 'active'" href="#" id="navbarMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle"  th:classappend="${currentPage == 'menus'} ? 'active'" href="/menus" id="navbarMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Menús
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarMenuDropdown">
+                        <ul class="dropdown-component" aria-labelledby="navbarMenuDropdown">
                             <li><a class="dropdown-item" href="/menus">Ver todos</a></li>
                             <li><a class="dropdown-item" href="/menu/create">Nuevo Menú</a></li>
                         </ul>
