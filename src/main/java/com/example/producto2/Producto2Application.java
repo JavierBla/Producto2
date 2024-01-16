@@ -1,6 +1,7 @@
 package com.example.producto2;
 
 import com.example.producto2.repository.MenuRepository;
+import com.example.producto2.repository.PedidoRepository;
 import com.example.producto2.repository.ProductRepository;
 import com.example.producto2.repository.TipoRepository;
 import com.example.producto2.seeds.Seeds;
@@ -19,6 +20,8 @@ public class Producto2Application {
     ProductRepository productRepository;
     @Autowired
     TipoRepository tipoRepository;
+    @Autowired
+    PedidoRepository pedidoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Producto2Application.class, args);
@@ -26,10 +29,8 @@ public class Producto2Application {
 
     @Bean
     public CommandLineRunner commandLineRunner(){
-        Seeds seeds = new Seeds(menuRepository, productRepository, tipoRepository);
-        return runner -> {
-            seeds.generateSeeds();
-        };
+        Seeds seeds = new Seeds(menuRepository, productRepository, tipoRepository,pedidoRepository);
+        return runner -> seeds.generateSeeds();
     }
 
 }

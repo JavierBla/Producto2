@@ -2,6 +2,8 @@ package com.example.producto2.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "pedido")
 public class Pedido {
@@ -13,6 +15,29 @@ public class Pedido {
     int numPedido;
     @Column(name = "direccion", nullable = false)
     String direccion;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    Usuario usuario;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "pedido_productos",
+            joinColumns = {@JoinColumn(name = "id_pedido")},
+            inverseJoinColumns = {@JoinColumn(name = "id_producto")}
+    )
+    private List<Producto> productos;
+
+    public Pedido(int numPedido, String direccion, Usuario user, List<Producto> productos){
+        this.numPedido = numPedido;
+        this.direccion = direccion;
+        this.usuario = user;
+        this.productos = productos;
+    }
+
+    public Pedido() {
+
+    }
 
     public void setId(int id) {
         this.id = id;

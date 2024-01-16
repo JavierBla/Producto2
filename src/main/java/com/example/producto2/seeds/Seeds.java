@@ -1,22 +1,25 @@
 package com.example.producto2.seeds;
 
-import com.example.producto2.model.entity.Menu;
-import com.example.producto2.model.entity.Producto;
-import com.example.producto2.model.entity.Tipo;
+import com.example.producto2.model.entity.*;
 import com.example.producto2.repository.MenuRepository;
+import com.example.producto2.repository.PedidoRepository;
 import com.example.producto2.repository.ProductRepository;
 import com.example.producto2.repository.TipoRepository;
+
+import java.util.ArrayList;
 
 
 public class Seeds {
     private MenuRepository menuRepository;
     private ProductRepository productRepository;
     private TipoRepository tipoRepository;
+    private PedidoRepository pedidoRepository;
 
-    public Seeds(MenuRepository menuRepository, ProductRepository productRepository, TipoRepository tipoRepository)  {
+    public Seeds(MenuRepository menuRepository, ProductRepository productRepository, TipoRepository tipoRepository, PedidoRepository pedidoRepository)  {
         this.menuRepository = menuRepository;
         this.productRepository = productRepository;
         this.tipoRepository = tipoRepository;
+        this.pedidoRepository = pedidoRepository;
     }
 
     public void generateSeeds(){
@@ -40,5 +43,12 @@ public class Seeds {
         productRepository.save(productTofu);
         productRepository.save(productTernera);
         productRepository.save(productSetas);
+
+        Usuario user = new Usuario("ignacio","pruebas","user","secret");
+        ArrayList<Producto> productos = new ArrayList<>();
+        productos.add(productPollo);
+        productos.add(productSeitan);
+        Pedido pedido1 = new Pedido(1, "Mi casa", user, productos);
+        //pedidoRepository.save(pedido1);
     }
 }

@@ -1,7 +1,7 @@
 /* HEADER */
 .main-header .nav-item--orders a{
     display: inline-block;
-    position: relative;
+    position: fixed;
 }
 .main-header .nav-item--orders .nav-link__badge{
     display: inline-flex;
