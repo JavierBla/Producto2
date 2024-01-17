@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <header th:fragment="header">
     <nav class="main-header navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -19,7 +19,7 @@
                         </a>
                         <ul class="dropdown-component" aria-labelledby="navbarProductsDropdown">
                             <li><a class="dropdown-item" href="/product">Ver todos</a></li>
-                            <li><a class="dropdown-item" href="/product/create">Nuevo Producto</a></li>
+                            <li sec:authorize="hasRole('ADMIN')"><a class="dropdown-item" href="/product/create">Nuevo Producto</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -28,7 +28,7 @@
                         </a>
                         <ul class="dropdown-component" aria-labelledby="navbarMenuDropdown">
                             <li><a class="dropdown-item" href="/menus">Ver todos</a></li>
-                            <li><a class="dropdown-item" href="/menu/create">Nuevo Menú</a></li>
+                            <li sec:authorize="hasRole('ADMIN')"><a class="dropdown-item" href="/menu/create">Nuevo Menú</a></li>
                         </ul>
                     </li>
                     <li class="nav-item nav-item--orders">
