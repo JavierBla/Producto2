@@ -9,41 +9,41 @@
 <div th:replace="fragments/header :: header"></div>
 <div layout:fragment="content">
     <div class="container my-4">
-        <div class="table-responsive">
-            <table class="table table-striped align-middle table--with-actions">
-                <thead class="table-borderless">
-                <tr>
-                    <th class="td-id" scope="col">Id</th>
-                    <th class="td-name" scope="col">Numero de pedido</th>
-                    <th scope="col">Direccion</th>
-                    <th class="td-actions" scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="pedido : ${pedidos}">
-                    <th scope="row" th:text="${pedido.id}"></th>
-                    <td th:text="${pedido.numPedido}"></td>
-                    <td th:text="${pedido.direccion}" class="w-25"></td>
-                    <td class="td-actions">
-                        <div class="td-actions__wrapper">
-                            <a th:href="@{'/pedido/' + ${pedido.id}}" role="button" class="btn btn-primary">
-                                <i class="bi bi-pencil"></i>
-                                <span>Editar</span>
-                            </a>
-                            <button type="button" class="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    th:data-name="${pedido.numPedido}"
-                                    th:data-id="${pedido.id}"
-                                    data-bs-target="#deleteMenuModal"
-                                    data-type="deleteButton">
-                                <i class="bi bi-trash3"></i>
-                                <span>Borrar</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-4 justify-content-between align-items-center">
+                    <h1>Detalle del pedido<span th:text="${pedido.id}"></span></h1>
+                    <button id="deleteMenuButton" class="btn btn-outline-danger"
+                            data-bs-toggle="modal"
+                            th:data-name="${pedido.numPedido}"
+                            th:data-id="${pedido.direccion}"
+                            th:data="${pedido.productos}"
+                            data-bs-target="#deleteMenuModal"
+                            data-type="deleteButton">Borrar menú</button>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"></rect></svg>
+                    </div>
+                    <div class="col-md-8 ps-3">
+                        <form action="#" th:action="@{/pedido/update/{id}(id=${pedido.id})}" th:object="${pedido}"
+                              method="post">
+                            <div class="mb-3">
+                                <label for="numPedido" class="form-label">Numero de pedido </label>
+                                <input th:field="*{numPedido}" type="text"
+                                       class="form-control" id="numPedido">
+                            </div>
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Direccion</label>
+                                <input type="text" class="form-control" id="direccion"
+                                       th:field="*{direccion}">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg px-4">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -90,7 +90,7 @@
                 try{
                     await fetch(`/api/menu/delete/${menuId}`, { method:
                             'DELETE' });
-                    location.reload();
+                    window.location.assign("/menus")
                 } catch (error) {
                     console.log('error')
                 }

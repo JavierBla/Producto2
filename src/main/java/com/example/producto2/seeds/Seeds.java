@@ -23,32 +23,68 @@ public class Seeds {
     }
 
     public void generateSeeds(){
-        Menu menuLibanes = new Menu("Libanes", 30.5);
-        Menu menuVeggie = new Menu("Veggie", 20);
-        Menu menuBurguer = new Menu("Burger", 25);
-        menuRepository.save(menuLibanes);
-        menuRepository.save(menuVeggie);
-        menuRepository.save(menuBurguer);
+        generateMenus();
+        generateProducts();
+        generatePedido();
 
+    }
+
+    private void generatePedido() {
+        Pedido pedido2 = new Pedido(156579, "C/San Juan 45");
+        Pedido pedido3 = new Pedido(156580, "Avda. Primavera 12");
+        Pedido pedido4 = new Pedido(156581, "Plaza Mayor 8");
+        Pedido pedido5 = new Pedido(156582, "Callejón del Arte 15");
+        Pedido pedido6 = new Pedido(156583, "Avenida del Sol 27");
+        Pedido pedido7 = new Pedido(156584, "Paseo de la Luna 3");
+        Pedido pedido8 = new Pedido(156585, "Rincón del Sabor 9");
+
+        pedidoRepository.save(pedido2);
+        pedidoRepository.save(pedido3);
+        pedidoRepository.save(pedido4);
+        pedidoRepository.save(pedido5);
+        pedidoRepository.save(pedido6);
+        pedidoRepository.save(pedido7);
+        pedidoRepository.save(pedido8);
+    }
+
+    private void generateProducts() {
         Tipo tipo = new Tipo("Comestible","Producto comestible");
         tipoRepository.save(tipo);
 
-        Producto productPollo = new Producto("Pollo",5.00, tipo);
-        Producto productSeitan = new Producto("Seitan",7.00, tipo);
-        Producto productTofu = new Producto("Tofu",6.50, tipo);
-        Producto productTernera = new Producto("Ternera",5.50, tipo);
-        Producto productSetas = new Producto("Setas",2.00, tipo);
-        productRepository.save(productPollo);
-        productRepository.save(productSeitan);
-        productRepository.save(productTofu);
-        productRepository.save(productTernera);
-        productRepository.save(productSetas);
+        Producto productHummus = new Producto("Hummus", 4.50, tipo);
+        Producto productFalafel = new Producto("Falafel", 6.75, tipo);
+        Producto productBabaGanoush = new Producto("Baba Ganoush", 5.25, tipo);
+        Producto productVeggieWrap = new Producto("Veggie Wrap", 8.50, tipo);
+        Producto productChickenWrap = new Producto("Chicken Wrap", 7.25, tipo);
+        Producto productBeyondBurger = new Producto("Beyond Burger", 29.50, tipo);
+        Producto productSweetPotatoFries = new Producto("Sweet Potato Fries", 3.75, tipo);
+        Producto productVeganCheese = new Producto("Vegan Cheese", 5.50, tipo);
+        Producto productMushroomBurger = new Producto("Mushroom Burger", 24.25, tipo);
+        Producto productGrilledTofu = new Producto("Grilled Tofu", 9.00, tipo);
 
-        Usuario user = new Usuario("ignacio","pruebas","user","secret");
-        ArrayList<Producto> productos = new ArrayList<>();
-        productos.add(productPollo);
-        productos.add(productSeitan);
-        Pedido pedido1 = new Pedido(1, "Mi casa", user, productos);
-        //pedidoRepository.save(pedido1);
+        productRepository.save(productHummus);
+        productRepository.save(productFalafel);
+        productRepository.save(productBabaGanoush);
+        productRepository.save(productVeggieWrap);
+        productRepository.save(productChickenWrap);
+        productRepository.save(productBeyondBurger);
+        productRepository.save(productSweetPotatoFries);
+        productRepository.save(productVeganCheese);
+        productRepository.save(productMushroomBurger);
+        productRepository.save(productGrilledTofu);
+    }
+
+    private void generateMenus() {
+        Menu menu1 = new Menu("Especial Libanés", 32.0);
+        Menu menu2 = new Menu("Vegetariano Delight", 18.5);
+        Menu menu3 = new Menu("Combo Burger XL", 28.75);
+        Menu menu4 = new Menu("Súper Veggie Mix", 22.0);
+        Menu menu5 = new Menu("Cheese Lovers Burger", 26.5);
+
+        menuRepository.save(menu1);
+        menuRepository.save(menu2);
+        menuRepository.save(menu3);
+        menuRepository.save(menu4);
+        menuRepository.save(menu5);
     }
 }

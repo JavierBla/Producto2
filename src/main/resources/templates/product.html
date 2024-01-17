@@ -20,21 +20,23 @@
                             <span class="display-6"><span th:text="${producto.precio}"></span>€</span>
                         </div>
 
-                        <a th:href="@{'/product/' + ${producto.id}}" role="button" class="btn btn-primary">
-                            <i class="bi bi-pencil"></i>
-                            <span>Editar</span>
-                        </a>
+                        <div sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{'/product/' + ${producto.id}}" role="button" class="btn btn-primary">
+                                <i class="bi bi-pencil"></i>
+                                <span>Editar</span>
+                            </a>
 
-                        <button type="button" class="btn btn-danger"
-                                data-bs-toggle="modal"
-                                th:data-name="${producto.nombre}"
-                                th:data-id="${producto.id}"
-                                data-bs-target="#deleteMenuModal"
-                                data-type="deleteButton">
-                            <i class="bi bi-trash3"></i>
-                            <span>Borrar</span>
-                        </button>
-                    </div>
+                            <button type="button" class="btn btn-danger"
+                                    data-bs-toggle="modal"
+                                    th:data-name="${producto.nombre}"
+                                    th:data-id="${producto.id}"
+                                    data-bs-target="#deleteMenuModal"
+                                    data-type="deleteButton">
+                                <i class="bi bi-trash3"></i>
+                                <span>Borrar</span>
+                            </button>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>

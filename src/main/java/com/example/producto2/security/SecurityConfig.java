@@ -34,15 +34,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer ->
                 configurer
-                        .anyRequest()
-                        .authenticated()
+                        .anyRequest().authenticated()
         ).formLogin(form ->
                 form
                         .loginPage("/auth/login")
                         .loginProcessingUrl("/authenticateUser")
                         .permitAll()
-        ).logout(LogoutConfigurer::permitAll)
-        ;
+        ).logout(
+                LogoutConfigurer::permitAll
+        ).exceptionHandling(configurer ->
+                        configurer.accessDeniedPage("/access-denied")
+        );
 
         return http.build();
     }

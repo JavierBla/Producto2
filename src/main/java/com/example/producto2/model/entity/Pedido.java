@@ -28,11 +28,9 @@ public class Pedido {
     )
     private List<Producto> productos;
 
-    public Pedido(int numPedido, String direccion, Usuario user, List<Producto> productos){
+    public Pedido(int numPedido, String direccion){
         this.numPedido = numPedido;
         this.direccion = direccion;
-        this.usuario = user;
-        this.productos = productos;
     }
 
     public Pedido() {
@@ -61,5 +59,13 @@ public class Pedido {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 }
