@@ -30,6 +30,19 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user, admin);
     }
 
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/", "/auth/**","/css/**",
+//                        "/js/**","/images/**").permitAll().anyRequest().authenticated()
+//                .and()
+//                .formLogin().loginPage("/auth/login").defaultSuccessUrl("/",
+//                        true).failureUrl("/auth/login?error=true")
+//                .loginProcessingUrl("/auth/login-post").permitAll()
+//                .and()
+//                .logout().logoutUrl("/logout").logoutSuccessUrl("/");
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer ->
