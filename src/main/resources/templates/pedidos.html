@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{base_layout}">
+      layout:decorate="~{base_layout}" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -14,9 +14,9 @@
                 <thead class="table-borderless">
                 <tr>
                     <th class="td-id" scope="col">Id</th>
-                    <th class="td-name" scope="col">Numero de pedido</th>
+                    <th scope="col">Numero de pedido</th>
                     <th scope="col">Direccion</th>
-                    <th class="td-actions" scope="col">Actions</th>
+                    <th class="td-actions" scope="col" sec:authorize="hasRole('ADMIN')">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
                     <th scope="row" th:text="${pedido.id}"></th>
                     <td th:text="${pedido.numPedido}"></td>
                     <td th:text="${pedido.direccion}" class="w-25"></td>
-                    <td class="td-actions">
+                    <td class="td-actions" sec:authorize="hasRole('ADMIN')">
                         <div class="td-actions__wrapper">
                             <a th:href="@{'/pedido/' + ${pedido.id}}" role="button" class="btn btn-primary">
                                 <i class="bi bi-pencil"></i>
