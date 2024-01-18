@@ -19,20 +19,32 @@
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"></rect></svg>
                     </div>
                     <div class="col-md-8 ps-3">
-                        <form class="needs-validation" action="#" th:action="@{/product/save/}" th:object="${product}"
+                        <form class="needs-validation" action="#" th:action="@{/product}" th:object="${product}"
                               method="post">
                             <div class="mb-3">
-                                <label for="menuName" class="form-label">Nombre</label>
+                                <label for="productName" class="form-label">Nombre</label>
                                 <input th:field="*{nombre}" type="text"
-                                       class="form-control" id="menuName"
+                                       class="form-control" id="productName"
                                        required>
                             </div>
                             <div class="mb-3">
                                 <label for="menuPrice" class="form-label">Precio</label>
                                 <input type="text" class="form-control" id="menuPrice"
                                        name="price"
-                                       th:value="${product.precio == 0.0} ? '' : ${product.precio}"
+                                       th:field="${product.precio}"
                                        pattern="^[0-9]+([.][0-9]*)?|[.][0-9]+$"
+                                       required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productDescription" class="form-label">Descripción</label>
+                                <input th:field="*{descripcion}" type="text"
+                                       class="form-control" id="productDescription"
+                                       required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productKcal" class="form-label">Kilo calorías</label>
+                                <input th:field="*{kcal}" type="text"
+                                       class="form-control" id="productKcal"
                                        required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg px-4">Guardar Producto</button>
