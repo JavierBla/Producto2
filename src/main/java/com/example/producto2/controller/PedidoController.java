@@ -35,8 +35,8 @@ public class PedidoController {
     }
 
     @PostMapping("/pedido/update/{id}")
-    public String updateMenu(@PathVariable("id") int id,
-                             @ModelAttribute("menu") Pedido pedidoDetails) {
+    public String updatePedido(@PathVariable("id") int id,
+                               @ModelAttribute("pedido") Pedido pedidoDetails) {
         Pedido pedido = pedidoDao.findById(id);
         if(pedido != null){
             pedido.setDireccion(pedidoDetails.getDireccion());
@@ -46,14 +46,14 @@ public class PedidoController {
     }
 
     @GetMapping("/pedido/create")
-    public String createMenu(Model model) {
-        model.addAttribute("pedido", new Menu());
+    public String createPedido(Model model) {
+        model.addAttribute("pedido", new Pedido());
         model.addAttribute("currentPage", "pedido");
         return "create_pedido";
     }
 
     @PostMapping("/pedido/save")
-    public String newMenu(Model model, @ModelAttribute("pedido") Pedido pedido) {
+    public String newPedido(@ModelAttribute("pedido") Pedido pedido) {
         pedidoDao.save(pedido);
         return "redirect:/";
     }
