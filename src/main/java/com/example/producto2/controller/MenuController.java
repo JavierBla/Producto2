@@ -51,9 +51,9 @@ public class MenuController {
         return "create_menu";
     }
 
-    @PostMapping("/menu/save")
+    @PostMapping("/menu")
     public String newMenu(Model model, @ModelAttribute("menu") Menu menu) {
         menuService.save(menu);
-        return "redirect:/";
+        return "redirect:/menus";
     }
 }

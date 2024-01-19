@@ -2,6 +2,7 @@ package com.example.producto2.controller;
 
 import com.example.producto2.model.dao.ProductoDaoImpl;
 import com.example.producto2.model.dao.UsuarioDaoImpl;
+import com.example.producto2.model.dao.ProductoDaoImpl;
 import com.example.producto2.model.entity.Menu;
 import com.example.producto2.model.entity.Pedido;
 import org.springframework.ui.Model;
