@@ -14,7 +14,7 @@ public class Usuario {
     @Column(name = "id_usuario")
     private Long id;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "email", nullable = false)
@@ -38,14 +38,10 @@ public class Usuario {
     @JoinColumn(name = "id_pedido")
     Pedido pedido;
 
-    public Usuario(String nombre, String email, String username, String password) {
-        this.nombre = nombre;
+    public Usuario(String email, String username, String password) {
         this.email = email;
         this.username = username;
         this.password = password;
-    }
-
-    public Usuario() {
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -58,6 +54,9 @@ public class Usuario {
                     @JoinColumn(name = "role_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
     private Set<Role> rolesAssociated = new HashSet<>();
+
+    public Usuario() {
+    }
 
     public Set<Role> getRolesAssociated() {
         return rolesAssociated;

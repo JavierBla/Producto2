@@ -2,7 +2,6 @@ package com.example.producto2.controller;
 
 
 import com.example.producto2.model.dao.ProductoDaoImpl;
-import com.example.producto2.model.entity.Menu;
 import com.example.producto2.model.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

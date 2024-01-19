@@ -1,5 +1,7 @@
 package com.example.producto2.controller;
 
+import com.example.producto2.model.dao.ProductoDaoImpl;
+import com.example.producto2.model.dao.UsuarioDaoImpl;
 import com.example.producto2.model.entity.Menu;
 import com.example.producto2.model.entity.Pedido;
 import org.springframework.ui.Model;
@@ -16,6 +18,12 @@ public class PedidoController {
 
     @Autowired
     private PedidoDaoImpl pedidoDao;
+
+    @Autowired
+    private ProductoDaoImpl productoDao;
+
+    @Autowired
+    private UsuarioDaoImpl usuarioDao;
 
     @GetMapping("/pedidos")
     public String getPedidos(Model model) {
@@ -49,12 +57,14 @@ public class PedidoController {
     public String createPedido(Model model) {
         model.addAttribute("pedido", new Pedido());
         model.addAttribute("currentPage", "pedido");
+        model.addAttribute("productoList",productoDao.findAll());
+        model.addAttribute("userList",usuarioDao.findAll());
         return "create_pedido";
     }
 
-    @PostMapping("/pedido/save")
+    @PostMapping("/pedido")
     public String newPedido(@ModelAttribute("pedido") Pedido pedido) {
         pedidoDao.save(pedido);
-        return "redirect:/";
+        return "redirect:/pedidos";
     }
 }

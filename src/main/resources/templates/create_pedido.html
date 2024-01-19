@@ -19,13 +19,13 @@
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"></rect></svg>
                     </div>
                     <div class="col-md-8 ps-3">
-                        <form class="needs-validation" action="#" th:action="@{/pedido/save/}" th:object="${pedido}"
+                        <form class="needs-validation" action="#" th:action="@{/pedido}" th:object="${pedido}"
                               method="post">
                             <div class="mb-3">
                                 <label for="Usuario" class="form-label">Usuario</label>
-                                <input th:field="*{usuario}" type="text"
-                                       class="form-control" id="Usuario"
-                                       required>
+                                <select th:field="*{usuario}" class="form-control" id="Usuario">
+                                    <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.username}"></option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="direccionPedido" class="form-label">Dirección</label>
@@ -36,7 +36,7 @@
                             <div class="mb-3">
                                 <label for="Producto" class="form-label">Producto</label>
                                 <select th:field="*{productos}" class="form-control" id="Producto">
-                                    <option th:each="prod : ${pedido.getProductos()}" th:value="${prod.id}" th:text="${prod.nombre}"></option>
+                                    <option th:each="prod : ${productoList}" th:value="${prod.id}" th:text="${prod.nombre}"></option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg px-4">Guardar Pedido</button>

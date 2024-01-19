@@ -1,12 +1,9 @@
 package com.example.producto2.seeds;
 
 import com.example.producto2.model.entity.*;
-import com.example.producto2.repository.MenuRepository;
-import com.example.producto2.repository.PedidoRepository;
-import com.example.producto2.repository.ProductRepository;
-import com.example.producto2.repository.TipoRepository;
+import com.example.producto2.repository.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class Seeds {
@@ -14,19 +11,29 @@ public class Seeds {
     private ProductRepository productRepository;
     private TipoRepository tipoRepository;
     private PedidoRepository pedidoRepository;
+    private UserRepository userRepository;
 
-    public Seeds(MenuRepository menuRepository, ProductRepository productRepository, TipoRepository tipoRepository, PedidoRepository pedidoRepository)  {
+    public Seeds(MenuRepository menuRepository, ProductRepository productRepository, TipoRepository tipoRepository, PedidoRepository pedidoRepository, UserRepository userRepository)  {
         this.menuRepository = menuRepository;
         this.productRepository = productRepository;
         this.tipoRepository = tipoRepository;
         this.pedidoRepository = pedidoRepository;
+        this.userRepository = userRepository;
     }
 
     public void generateSeeds(){
         generateMenus();
         generateProducts();
         generatePedido();
+        generateUsuarios();
+    }
 
+    private void generateUsuarios() {
+        Usuario user = new Usuario("user@example.com","user","hola01");
+        Usuario admin = new Usuario("admin@example.com","admin","admin01");
+
+        userRepository.save(user);
+        userRepository.save(admin);
     }
 
     private void generatePedido() {
