@@ -27,10 +27,10 @@ public class Producto2Application {
         SpringApplication.run(Producto2Application.class, args);
     }
 
-//    @Bean
-//    public CommandLineRunner commandLineRunner(){
-//        Seeds seeds = new Seeds(menuRepository, productRepository, tipoRepository,pedidoRepository);
-//        return runner -> seeds.generateSeeds();
-//    }
+    @Bean
+    public CommandLineRunner commandLineRunner(){
+        Seeds seeds = new Seeds(menuRepository, productRepository, tipoRepository,pedidoRepository);
+        return runner -> seeds.generateSeeds();
+    }
 
 }
